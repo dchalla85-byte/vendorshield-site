@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VendorShield – Catch Hidden Price Hikes</title>
+  <meta name="description" content="Stop losing money to silent vendor price increases. Upload invoices, get weekly alerts, and recover savings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- TailwindCSS via CDN for quick, free styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif; }
+    .gradient { background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #22c55e 100%); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-xl gradient"></div>
+        <span class="font-extrabold text-lg">VendorShield</span>
+      </a>
+      <nav class="hidden sm:flex items-center gap-6 text-sm font-medium">
+        <a href="#features" class="hover:text-slate-900 text-slate-600">Features</a>
+        <a href="#how" class="hover:text-slate-900 text-slate-600">How it works</a>
+        <a href="#pricing" class="hover:text-slate-900 text-slate-600">Pricing</a>
+        <a href="#signup" class="px-4 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-700">Join the Pilot</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 gradient opacity-10"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
+            Stop losing money to hidden vendor price hikes
+          </h1>
+          <p class="mt-5 text-lg text-slate-700">
+            We scan your invoices, flag silent increases, and give you ready‑to‑send negotiation emails. One catch can pay for the whole year.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#signup" class="px-6 py-3 rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-700">Join the free pilot</a>
+            <a href="#features" class="px-6 py-3 rounded-xl bg-white border border-slate-300 font-semibold hover:bg-slate-100">See features</a>
+          </div>
+          <p class="mt-4 text-sm text-slate-500">No credit card required · Cancel anytime · Privacy-first</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+          <div class="text-sm text-slate-500">Sample weekly report</div>
+          <div class="mt-3 space-y-4">
+            <div class="p-4 rounded-xl border border-slate-200">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold">Slack</span>
+                <span class="text-xs px-2 py-1 rounded-lg bg-amber-100 text-amber-800">+12%</span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1">$500 → $560 since last month. 3 inactive seats detected.</p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold">AWS Lambda</span>
+                <span class="text-xs px-2 py-1 rounded-lg bg-rose-100 text-rose-800">+15%</span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1">New surcharge line item found. Estimate $612/yr extra.</p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold">Dropbox</span>
+                <span class="text-xs px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800">Duplicate</span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1">1 duplicated license ($18/mo). Safe to remove.</p>
+            </div>
+          </div>
+          <div class="mt-6">
+            <a href="#signup" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-700">Get alerts like this →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos / social proof placeholder -->
+  <section class="py-10 bg-white border-y border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-sm text-slate-500">Built for controllers, finance leads, and founders.</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold">What you get</h2>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Invoice scanning</h3>
+          <p class="mt-2 text-sm text-slate-600">We read PDFs and emails to track vendor, unit price, fees, and seats over time.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Price‑creep alerts</h3>
+          <p class="mt-2 text-sm text-slate-600">Get flagged when prices rise, new fees appear, or duplicate charges show up.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Ready-to-send emails</h3>
+          <p class="mt-2 text-sm text-slate-600">We draft negotiation emails so you can recover savings in minutes.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Weekly digest</h3>
+          <p class="mt-2 text-sm text-slate-600">A simple report with the top issues and estimated annual savings.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Privacy‑first</h3>
+          <p class="mt-2 text-sm text-slate-600">You control what you share. We only scan the data needed for alerts.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Fast setup</h3>
+          <p class="mt-2 text-sm text-slate-600">Forward invoices to a dedicated email. No complex integrations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="py-16 bg-white border-y border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold">How it works</h2>
+      <ol class="mt-8 grid md:grid-cols-3 gap-6 list-decimal list-inside">
+        <li class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Forward invoices</h3>
+          <p class="mt-2 text-sm text-slate-600">Send PDFs to your dedicated address (e.g., bills@yoursite.com).</p>
+        </li>
+        <li class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">We scan & compare</h3>
+          <p class="mt-2 text-sm text-slate-600">We track line items and spot silent price increases or duplicates.</p>
+        </li>
+        <li class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">You get savings alerts</h3>
+          <p class="mt-2 text-sm text-slate-600">Act on a weekly digest with ready-to-send vendor emails.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Pricing (placeholder) -->
+  <section id="pricing" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold">Simple pilot pricing</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Starter</h3>
+          <p class="text-3xl font-extrabold mt-2">$99<span class="text-base font-medium text-slate-500">/mo</span></p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2">
+            <li>Up to 50 invoices</li>
+            <li>Weekly digest</li>
+            <li>Email support</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm ring-2 ring-slate-900">
+          <h3 class="font-semibold">Growth</h3>
+          <p class="text-3xl font-extrabold mt-2">$299<span class="text-base font-medium text-slate-500">/mo</span></p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2">
+            <li>Up to 500 invoices</li>
+            <li>Renegotiation drafts</li>
+            <li>Priority support</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Pro</h3>
+          <p class="text-3xl font-extrabold mt-2">Custom</p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2">
+            <li>Unlimited invoices</li>
+            <li>Custom rules & SSO</li>
+            <li>Dedicated success manager</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup (embed a free form) -->
+  <section id="signup" class="py-16 bg-slate-900 text-white">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold">Join the free pilot</h2>
+      <p class="mt-3 text-slate-300">Tell us where to send your dedicated invoice address and weekly report.</p>
+
+      <!-- OPTION A: Google Form embed (replace the src URL with your own Google Form embed link) -->
+      <div class="mt-6 aspect-video rounded-2xl overflow-hidden border border-slate-800">
+        <iframe src="https://docs.google.com/forms/d/e/FORM_ID_HERE/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="Pilot signup form">Loading…</iframe>
+      </div>
+
+      <!-- OPTION B: Simple email signup (uncomment to use instead of Google Form)
+      <form class="mt-6 grid sm:grid-cols-[1fr_auto] gap-3" name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <input class="w-full rounded-xl px-4 py-3 text-slate-900" name="email" type="email" placeholder="you@company.com" required />
+        <button class="px-6 py-3 rounded-xl bg-white text-slate-900 font-semibold hover:bg-slate-200" type="submit">Request invite</button>
+      </form>
+      -->
+
+      <p class="mt-4 text-xs text-slate-400">We’ll never share your information. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 bg-black text-slate-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© <span id="year"></span> VendorShield. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white">Privacy</a>
+        <a href="#" class="hover:text-white">Terms</a>
+        <a href="#signup" class="hover:text-white">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
