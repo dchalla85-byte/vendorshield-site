@@ -8,15 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- TailwindCSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Tesseract.js for demo OCR (images only, no backend required) -->
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif; }
     .gradient { background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #22c55e 100%); }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -135,7 +132,7 @@
       <ol class="mt-8 grid md:grid-cols-3 gap-6 list-decimal list-inside">
         <li class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
           <h3 class="font-semibold">Forward invoices</h3>
-          <p class="mt-2 text-sm text-slate-600">Send PDFs to your dedicated address <span class="mono" id="billsEmail">bills@yourapp.com</span>.</p>
+          <p class="mt-2 text-sm text-slate-600">Send PDFs to your dedicated address (e.g., <span class="mono">bills@yourapp.com</span>).</p>
         </li>
         <li class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
           <h3 class="font-semibold">We scan & compare</h3>
@@ -149,37 +146,30 @@
     </div>
   </section>
 
-  <!-- NEW: Invoice Intake (upload + demo OCR + digest) -->
+  <!-- NEW: Invoice intake -->
   <section id="intake" class="py-16">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold">Invoice intake</h2>
-      <p class="mt-3 text-slate-600">
-        Upload an invoice file, or simply forward emails to <span class="mono" id="billsEmail2">bills@yourapp.com</span>.
-        In demo mode, OCR runs locally on <b>images</b> (JPG/PNG). PDFs are supported once the backend is enabled.
-      </p>
+      <p class="mt-3 text-slate-600">Upload a PDF/JPG/PNG invoice. We’ll store it, OCR it, and extract vendor/date/total.</p>
 
       <form id="invoiceForm" class="mt-6 grid gap-4">
         <div>
-          <label class="block text-sm font-semibold mb-1">Work email (for digest)</label>
+          <label class="block text-sm font-semibold mb-1">Your work email (for weekly digest)</label>
           <input id="companyEmail" type="email" class="w-full border rounded px-3 py-2" placeholder="you@company.com" required />
         </div>
         <div>
-          <label class="block text-sm font-semibold mb-1">Invoice file (PDF / JPG / PNG)</label>
+          <label class="block text-sm font-semibold mb-1">Invoice file</label>
           <input id="invoiceFile" type="file" accept=".pdf,.jpg,.jpeg,.png" class="w-full border rounded px-3 py-2 bg-white" required />
         </div>
-        <button class="w-fit px-5 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-700" type="submit">Upload & Scan</button>
+
+        <!-- Upload button with spinner -->
+        <button id="uploadBtn" class="w-fit inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-700 disabled:opacity-60 disabled:cursor-not-allowed" type="submit">
+          <span>Upload & Process</span>
+          <span id="spinner" class="hidden w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
+        </button>
       </form>
 
       <div id="uploadResult" class="mt-4 text-sm"></div>
-
-      <div class="mt-8">
-        <button id="showDigest" class="px-4 py-2 rounded bg-white border border-slate-300 hover:bg-slate-100">Show weekly digest (demo)</button>
-        <pre id="digestOut" class="mt-3 p-3 bg-slate-900 text-white rounded-lg overflow-auto text-sm hidden"></pre>
-      </div>
-
-      <p class="mt-6 text-xs text-slate-500">
-        Demo data is stored in your browser (localStorage). Replace demo with S3/Drive + Textract/Vision + scheduled email when you’re ready.
-      </p>
     </div>
   </section>
 
@@ -209,7 +199,7 @@
         <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
           <h3 class="font-semibold">Pro</h3>
           <p class="text-3xl font-extrabold mt-2">Custom</p>
-          <ul class="mt-4 text-sm text-slate-600 space-y-2">
+          <ul class="mt-4 text sm text-slate-600 space-y-2">
             <li>Unlimited invoices</li>
             <li>Custom rules & SSO</li>
             <li>Dedicated success manager</li>
@@ -219,13 +209,12 @@
     </div>
   </section>
 
-  <!-- Signup (embed a free form) -->
+  <!-- Signup (Google Form placeholder) -->
   <section id="signup" class="py-16 bg-slate-900 text-white">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold">Join the free pilot</h2>
       <p class="mt-3 text-slate-300">Tell us where to send your dedicated invoice address and weekly report.</p>
 
-      <!-- Replace FORM_ID_HERE with your own Google Form embed link -->
       <div class="mt-6 aspect-video rounded-2xl overflow-hidden border border-slate-800">
         <iframe src="https://docs.google.com/forms/d/e/FORM_ID_HERE/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="Pilot signup form">Loading…</iframe>
       </div>
@@ -246,141 +235,167 @@
     </div>
   </footer>
 
-  <script>
-    // -------------------- CONFIG --------------------
-    const CONFIG = {
-      BILLS_EMAIL: 'bills@yourapp.com', // change when you have your domain inbox
-      USE_DEMO_MODE: true,              // true = works on GitHub Pages with image OCR + localStorage
-      UPLOAD_ENDPOINT: '/.netlify/functions/upload-invoice',     // when backend is ready
-      WEEKLY_DIGEST_ENDPOINT: '/.netlify/functions/weekly-digest' // optional scheduled email trigger
-    };
+  <!-- Toast -->
+  <div id="toast" class="fixed inset-x-0 bottom-6 mx-auto w-fit max-w-[90vw] hidden">
+    <div id="toastInner" class="px-4 py-2 rounded-xl shadow-lg text-sm bg-emerald-600 text-white flex items-center gap-3">
+      <span id="toastMsg">Saved ✔</span>
+      <button id="toastClose" class="text-white/80 hover:text-white" aria-label="Close">✕</button>
+    </div>
+  </div>
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('billsEmail').textContent = CONFIG.BILLS_EMAIL;
-    document.getElementById('billsEmail2').textContent = CONFIG.BILLS_EMAIL;
+<script>
+  // ====== CONFIG ======
+  const CONFIG = {
+    // Your deployed Apps Script web app URL:
+    UPLOAD_ENDPOINT: 'https://script.google.com/macros/s/AKfycbzfWArQGby4duxuY8X3ZgPW6Byy2VjDH65ICKMyr_i1JM5G8TumpBYVJtpWGEBDm7e4/exec',
+    // Must match the SECRET in your Apps Script:
+    SECRET: 'vs-2025-secret'
+  };
 
-    // -------------------- DEMO STORAGE --------------------
-    const DEMO_KEY = 'vendorshield-demo-data'; // { [email]: { [vendor]: [{date,total}] } }
-    const loadDemo = () => JSON.parse(localStorage.getItem(DEMO_KEY) || '{}');
-    const saveDemo = (data) => localStorage.setItem(DEMO_KEY, JSON.stringify(data));
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Parse vendor & total from raw text (very rough heuristics for demo)
-    function guessVendor(text) {
-      const lines = (text || '').split(/\n+/).map(s => s.trim()).filter(Boolean);
-      const first = lines.find(l => !/invoice/i.test(l)) || 'UNKNOWN';
-      return first.slice(0, 40);
+  // ---------- Upload handler (sends base64 JSON to Apps Script)
+  const form = document.getElementById('invoiceForm');
+  const out  = document.getElementById('uploadResult');
+  const btn  = document.getElementById('uploadBtn');
+  const spin = document.getElementById('spinner');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('companyEmail').value.trim();
+    const file  = document.getElementById('invoiceFile').files[0];
+
+    // Basic validations
+    if (!email) { showErr('Please enter your work email.'); return; }
+    if (!file)  { showErr('Please choose a file.'); return; }
+
+    // Validate by MIME & extension
+    const allowedMime = ['application/pdf', 'image/jpeg', 'image/png'];
+    const extOk = /\.(pdf|jpg|jpeg|png)$/i.test(file.name || '');
+    if ((file.type && !allowedMime.includes(file.type)) || !extOk) {
+      showErr('Please upload a PDF, JPG, or PNG.');
+      return;
     }
-    function guessTotal(text) {
-      const nums = (text || '').match(/(\$|USD)?\s?\d{1,3}(?:[,\s]\d{3})*(?:\.\d{2})?/g) || [];
-      let max = 0;
-      nums.forEach(n => {
-        const v = parseFloat(n.replace(/[^0-9.]/g, '')) || 0;
-        if (v > max) max = v;
-      });
-      return max || 0;
+    const MAX_MB = 15;
+    if (file.size > MAX_MB * 1024 * 1024) {
+      showErr(`File is too large. Max ${MAX_MB}MB.`);
+      return;
     }
 
-    // -------------------- Upload Handler --------------------
-    const form = document.getElementById('invoiceForm');
-    const out  = document.getElementById('uploadResult');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('companyEmail').value.trim();
-      const file  = document.getElementById('invoiceFile').files[0];
-      if (!file) return;
+    // show spinner & disable button
+    btn.disabled = true;
+    spin.classList.remove('hidden');
+    out.innerHTML = 'Uploading… <span class="text-xs text-slate-500">(this may take a moment)</span>';
 
-      out.textContent = 'Uploading…';
+    try {
+      const base64 = await fileToBase64(file);
+      const safeName = sanitizeFilename(file.name);
 
-      if (!CONFIG.USE_DEMO_MODE) {
-        // Real backend path: send file to serverless function (S3/Drive + Textract/Vision)
-        const body = new FormData();
-        body.append('email', email);
-        body.append('file', file);
-        try {
-          const res  = await fetch(CONFIG.UPLOAD_ENDPOINT, { method: 'POST', body });
-          const json = await res.json().catch(()=> ({}));
-          out.textContent = json.message || 'Uploaded for processing.';
-        } catch (err) {
-          out.textContent = 'Upload failed. Please try again.';
-        }
-        return;
-      }
+      const payload = {
+        email,
+        filename: safeName,
+        mimeType: (file.type && allowedMime.includes(file.type)) ? file.type : guessMimeByExt(safeName),
+        data: base64.split(',')[1]
+      };
 
-      // DEMO MODE (client-side OCR for images only)
-      if (!/^image\//.test(file.type)) {
-        out.innerHTML = 'Demo OCR works for <b>images</b>. PDFs need the backend enabled.';
-        return;
-      }
+      const url = `${CONFIG.UPLOAD_ENDPOINT}?secret=${encodeURIComponent(CONFIG.SECRET)}`;
 
-      try {
-        const result = await Tesseract.recognize(file, 'eng');
-        const text   = result?.data?.text || '';
-        const vendor = guessVendor(text);
-        const total  = guessTotal(text);
-        const today  = new Date().toISOString().slice(0,10);
-
-        const db = loadDemo();
-        db[email] = db[email] || {};
-        db[email][vendor] = db[email][vendor] || [];
-        db[email][vendor].push({ date: today, total });
-        db[email][vendor] = db[email][vendor].slice(-6); // keep last 6
-        saveDemo(db);
-
-        // quick comparison vs previous
-        const arr = db[email][vendor];
-        let msg = `Saved ${vendor} • ${today} • $${total.toFixed(2)}.`;
-        if (arr.length >= 2) {
-          const prev = arr[arr.length-2];
-          const delta = total - prev.total;
-          const pct = prev.total ? ((delta/prev.total)*100).toFixed(1) : '—';
-          if (delta !== 0) msg += ` Compared to previous: $${prev.total.toFixed(2)} → $${total.toFixed(2)} (${delta>0?'+':''}${delta.toFixed(2)} | ${pct}%).`;
-        }
-        out.textContent = msg;
-      } catch {
-        out.textContent = 'OCR failed. Try a clearer image.';
-      }
-    });
-
-    // -------------------- Weekly Digest (demo) --------------------
-    document.getElementById('showDigest').addEventListener('click', async () => {
-      const pre = document.getElementById('digestOut');
-
-      if (!CONFIG.USE_DEMO_MODE) {
-        try {
-          await fetch(CONFIG.WEEKLY_DIGEST_ENDPOINT, { method: 'POST' });
-          pre.classList.remove('hidden');
-          pre.textContent = 'Weekly digest triggered on server.';
-        } catch {
-          pre.classList.remove('hidden');
-          pre.textContent = 'Could not trigger digest.';
-        }
-        return;
-      }
-
-      const db = loadDemo();
-      const lines = [];
-      Object.entries(db).forEach(([email, vendors]) => {
-        lines.push(`== ${email} ==`);
-        Object.entries(vendors).forEach(([vendor, arr]) => {
-          if (arr.length < 2) return;
-          const prev = arr[arr.length-2], curr = arr[arr.length-1];
-          const delta = curr.total - prev.total;
-          const pct = prev.total ? ((delta/prev.total)*100).toFixed(1) : '—';
-          if (delta !== 0) lines.push(`${vendor}: $${prev.total.toFixed(2)} → $${curr.total.toFixed(2)} (${delta>0?'+':''}${delta.toFixed(2)} | ${pct}%)`);
-        });
-        lines.push('');
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
-      pre.classList.remove('hidden');
-      pre.textContent = lines.length ? lines.join('\n') : 'No changes yet. Upload at least two invoices for the same vendor.';
-    });
 
-    // -------------------- Notes for backend (optional) --------------------
-    // • Netlify Functions:
-    //   [build] publish="."  functions="netlify/functions"
-    //   upload-invoice.js  -> save to S3 or Drive, run Textract/Vision, persist rows
-    //   weekly-digest.js   -> compare + send SES/SMTP emails (can be scheduled)
-    // • Google Apps Script alternative:
-    //   Publish a Web App; set USE_DEMO_MODE=false and use its URL as UPLOAD_ENDPOINT.
-  </script>
+      let json = null;
+      try { json = await res.json(); } catch {}
+
+      if (!res.ok || !json) throw new Error(`Upload failed (${res.status}).`);
+
+      if (json.ok) {
+        out.innerHTML = [
+          'Saved ✔',
+          `<b>Vendor:</b> ${escapeHTML(json.vendor || '—')}`,
+          `<b>Date:</b> ${escapeHTML(json.invoiceDate || '—')}`,
+          `<b>Total:</b> ${fmt(json.total)}`
+        ].join('<br>');
+        showToast('Saved ✔', true);
+        form.reset();
+      } else {
+        const msg = json.error ? String(json.error) : 'Processing error.';
+        showErr(msg);
+        showToast(`Error: ${msg}`, false);
+      }
+    } catch (err) {
+      console.error(err);
+      showErr('Upload failed. Please try again.');
+      showToast('Upload failed. Please try again.', false);
+    } finally {
+      // hide spinner & re-enable button
+      btn.disabled = false;
+      spin.classList.add('hidden');
+    }
+  });
+
+  // ---------- helpers
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result);
+      r.onerror = reject;
+      r.readAsDataURL(file);
+    });
+  }
+
+  function sanitizeFilename(name) {
+    const base = String(name || 'invoice').split(/[/\\]/).pop();
+    return base.replace(/[^\w.\-()+\s]/g, '_').slice(0, 80) || 'invoice.pdf';
+  }
+
+  function guessMimeByExt(name) {
+    const lower = String(name).toLowerCase();
+    if (/\.(jpg|jpeg)$/.test(lower)) return 'image/jpeg';
+    if (/\.png$/.test(lower))        return 'image/png';
+    return 'application/pdf';
+  }
+
+  function fmt(n) {
+    const v = Number(n || 0);
+    return isFinite(v) ? `$${v.toFixed(2)}` : '—';
+  }
+
+  function showErr(msg) {
+    out.innerHTML = `<span class="text-rose-700">${escapeHTML(msg)}</span>`;
+  }
+
+  function escapeHTML(s) {
+    return String(s).replace(/[&<>"']/g, c => (
+      { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]
+    ));
+  }
+
+  // ---------- toast
+  const toast = document.getElementById('toast');
+  const toastInner = document.getElementById('toastInner');
+  const toastMsg = document.getElementById('toastMsg');
+  const toastClose = document.getElementById('toastClose');
+  let toastTimer = null;
+
+  function showToast(message, success = true) {
+    toastMsg.textContent = message;
+    toastInner.className =
+      `px-4 py-2 rounded-xl shadow-lg text-sm flex items-center gap-3 ${success ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'}`;
+    toast.classList.remove('hidden');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.add('hidden'), 4000);
+  }
+  toastClose.addEventListener('click', () => {
+    toast.classList.add('hidden');
+    clearTimeout(toastTimer);
+  });
+</script>
+
 </body>
 </html>
